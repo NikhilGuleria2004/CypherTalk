@@ -65,6 +65,7 @@ body, html {
     line-height: 1.4em;
     display: flex;
     align-items: center;
+    font-family: monospace;
 }
 
 .info-box h2 {
@@ -147,7 +148,7 @@ body, html {
 
 .navbar-content {
     font-family: monospace; /* Consistent font style */
-    font-size: 20px; /* Font size for the text */
+    font-size: 15px; /* Font size for the text */
     letter-spacing: 1px;
     text-align: right; /* Align text to the right */
 }
