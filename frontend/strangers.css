@@ -1,0 +1,126 @@
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Background video styling */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* Webcam overlay styling */
+.webcam-overlay {
+    position: fixed;
+    top: 30%;
+    width: 400px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.2); /* Translucent background */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Slight border */
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transform: translateY(-50%); /* Vertically center */
+}
+
+/* Position left and right windows */
+.webcam-overlay.left {
+    left: 23%; /* Adjust to position further left */
+}
+
+.webcam-overlay.right {
+    right: 23%; /* Adjust to position further right */
+}
+
+#webcam-left, #webcam-right {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Chatbox styling */
+.chatbox {
+    position: fixed;
+    bottom: 10%;
+    left: 20%; /* Align with the left window */
+    width: 60%; /* Stretch to the right window */
+    background-color: rgba(0, 0, 0, 1); /* Translucent background for chatbox */
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.message-form {
+    display: flex;
+    gap: 10px;
+}
+
+.message-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+.message-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0,0,255,0.3);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#message-input{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Blinking animation for title */
+@keyframes blink {
+    0%, 100% { color: white; }
+    50% { color: black; }
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 25px;
+    animation: blink 1s infinite; /* Blinking effect */
+    font-weight: bold;
+}
+

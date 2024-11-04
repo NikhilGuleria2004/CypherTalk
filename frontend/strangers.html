@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background & Dual Webcam Video with Chat</title>
+  <link rel="stylesheet" href="strangers.css">
+</head>
+<body>
+  <div class="video-background">
+    <video autoplay muted loop>
+      <source src="TalkToStrangers.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <h1 class="title">You Are Connected To A Stranger!</h1>
+
+  <!-- Left video window -->
+  <div class="webcam-overlay left">
+    <video id="webcam-left" autoplay muted></video>
+  </div>
+
+  <!-- Right video window -->
+  <div class="webcam-overlay right">
+    <video id="webcam-right" autoplay muted></video>
+  </div>
+
+  <!-- Chat box area -->
+  <div class="chatbox">
+    <div class="chat-messages">
+      <!-- Messages will be displayed here -->
+    </div>
+    <form class="message-form" id="messageForm">
+      <input type="text" id="messageInput" placeholder="Type your message..." required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="strangers.js"></script>
+</body>
+</html>
