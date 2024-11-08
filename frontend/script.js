@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const rect = button.getBoundingClientRect();
         pointer.style.top = `${rect.top + window.scrollY}px`; // Adjust for scroll position
         pointer.style.left = `${rect.left + rect.width + 10}px`; // Place pointer to the right of the button
+
+        // Remove hovered class from all buttons
+        buttons.forEach(button => button.classList.remove('hovered'));
+
+        // Add hovered class to the current button
+        button.classList.add('hovered');
     }
 
     // Initialize pointer position
