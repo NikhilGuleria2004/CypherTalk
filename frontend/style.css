@@ -1,0 +1,149 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated; /* Ensure pixelated rendering is applied */
+}
+
+/* General styling */
+body {
+    background-color: black;
+    color: #43CD80; /* Slightly brighter green */
+    font-family: 'VT323', monospace; /* Use VT323 font */
+    text-transform: uppercase;
+    font-size: 95px; /* Larger font for an old-school look */
+    font-weight: 100;
+    display: flex;
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 60px; /* Add space for the navbar */
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed; /* Make the navbar fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between; /* Space out the content */
+    padding: 15px;
+    border: 4px solid #43CD80; /* Slightly brighter green border */
+    width: 100%;
+    z-index: 100; /* Ensure the navbar stays on top */
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    padding-left: 10px; /* Add some padding to move "CypherTalk" to the left */
+}
+
+.navbar .logo a {
+    color: #43CD80;
+    font-size: 36px; /* Larger font for the logo */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Links Styling */
+.navbar .nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding-right: 20px; /* Add some padding to move links to the right */
+}
+
+.navbar .nav-links a {
+    color: #43CD80;
+    text-decoration: none;
+    font-size: 26px; /* Increase font size for links */
+    letter-spacing: 1px; /* Add space between letters for better pixel effect */
+}
+
+/* Pixelated Border */
+.navbar {
+    border-width: 4px;
+    border-style: solid;
+    border-color: #43CD80;
+    box-shadow: 0 0 0 4px black, 4px 0 0 0 black, -4px 0 0 0 black;
+}
+
+/* Links on hover */
+.navbar .nav-links a:hover {
+    color: #3CB371; /* Slightly darker green for hover */
+}
+
+/* Pixelated Text Effect */
+body, h1, p, a, ul, li {
+    image-rendering: pixelated; /* Apply pixelation to all text and elements */
+    font-size: 30px; /* Increase font size for pixelation effect */
+    letter-spacing: 1px; /* Adjust letter spacing for clearer pixelation */
+}
+
+/* Button Styling */
+.buttons {
+    position: fixed; /* Fix the buttons at the bottom left */
+    left: 60px; /* Move the buttons a bit to the right */
+    bottom: 80px; /* Move the buttons a bit above the bottom */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.retro-btn {
+    background-color: black;
+    color: #43CD80;
+    border: 2px solid #43CD80;
+    font-family: 'VT323', monospace; /* Apply VT323 font */
+    font-size: 26px; /* Larger button font size */
+    text-transform: uppercase;
+    padding: 12px 25px; /* Increase padding for larger buttons */
+    cursor: pointer;
+    width: 250px;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Button Hover Effect */
+.retro-btn:hover,
+.retro-btn.hovered {
+    background-color: #43CD80;
+    color: black;
+}
+
+/* Terminal Pointer Styling */
+#terminal-pointer {
+    position: absolute;
+    font-size: 60px; /* Larger font size for the pointer */
+    color: #43CD80;
+    transition: top 0.1s, left 0.1s; /* Smooth movement */
+    font-weight: bolder;
+    animation: blink 1s step-start infinite; /* Blinking effect */
+}
+
+/* Blinking Animation */
+@keyframes blink {
+    50% {
+        opacity: 0; /* Make the pointer invisible at the halfway point */
+    }
+}
+
+/* Center Button Styling */
+.center-button {
+    position: absolute;
+    top: 100px; /* Move the button just below the navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.center-button .retro-btn {
+    font-size: 40px; /* Increase font size for center button */
+    padding: 20px 40px; /* Larger padding */
+    width: 350px; /* Increase width for a larger button */
+}
