@@ -110,11 +110,13 @@ body, h1, p, a, ul, li {
 }
 
 /* Button Hover Effect */
+/* Button Hover Effect */
 .retro-btn:hover,
 .retro-btn.hovered {
     background-color: #43CD80;
     color: black;
 }
+
 
 /* Terminal Pointer Styling */
 #terminal-pointer {
@@ -126,12 +128,7 @@ body, h1, p, a, ul, li {
     animation: blink 1s step-start infinite; /* Blinking effect */
 }
 
-/* Blinking Animation */
-@keyframes blink {
-    50% {
-        opacity: 0; /* Make the pointer invisible at the halfway point */
-    }
-}
+
 
 /* Center Button Styling */
 .center-button {
