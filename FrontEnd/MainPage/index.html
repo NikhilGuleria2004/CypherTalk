@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CypherTalk</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">CypherTalk</a>
+        </div>
+        <div class="nav-links">
+            <a href="#">Nikhil</a>
+            <a href="#">Navkaran</a>
+            <a href="#">Arshad</a>
+            <a href="#">Harsh</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="marquee-container">
+            <div class="marquee">
+                <Span>Connect securely, communicate freely.</Span>
+                <span>Your conversations, your control.</span>
+                
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="retro-btn" data-action="talk-stranger">Talk to Stranger</button>
+            <button class="retro-btn" data-action="talk-contacts">Talk to Contacts</button>
+            <button class="retro-btn" data-action="author-github">Author Github Page</button>
+            <button class="retro-btn" data-action="team-report">Team Project Report</button>
+        </div>
+
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-title">Terminal</span>
+                <div class="terminal-buttons">
+                    <span class="button red"></span>
+                    <span class="button yellow"></span>
+                    <span class="button green"></span>
+                </div>
+            </div>
+            <div class="terminal-content" id="terminalContent">
+                <p>Welcome to CypherTalk!</p>
+                <p>This Terminal Tracks All Your Actions...</p>
+            </div>
+            <div class="terminal-input">
+                <span class="prompt"></span>
+                <input type="text" id="terminalInput" autofocus>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
