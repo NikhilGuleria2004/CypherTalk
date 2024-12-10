@@ -4,11 +4,9 @@ import { useChatStore } from "../store/useChatStore";
 import Sidebar from "../components/Sidebar";
 import NoChatSelected from "../components/NoChatSelected";
 import ChatContainer from "../components/ChatContainer";
-import VideoChat from "../components/VideoChat";
 
 const HomePage = () => {
   const { selectedUser } = useChatStore();
-  const { authUser } = useAuthStore();
 
   return (
     <div className="h-screen bg-base-200">
@@ -22,10 +20,6 @@ const HomePage = () => {
                 <NoChatSelected />
               ) : (
                 <ChatContainer />
-              )}
-
-              {selectedUser && (
-                <VideoChat currentUser={authUser} />
               )}
             </div>
           </div>
