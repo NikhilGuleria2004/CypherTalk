@@ -23,7 +23,6 @@ const ChatContainer = () => {
   const [imageToForward, setImageToForward] = useState(null);
   const [messageToForward, setMessageToForward] = useState(null);
   const [videoToForward, setVideoToForward] = useState(null);
-  const [activeMenu, setActiveMenu] = useState(null);
 
   useEffect(() => {
     getMessages(selectedUser._id);
@@ -103,14 +102,6 @@ const ChatContainer = () => {
     }
   };
 
-  const toggleMenu = (messageId) => {
-    setActiveMenu((prev) => (prev === messageId ? null : messageId));
-  };
-
-  const closeMenu = () => {
-    setActiveMenu(null);
-  };
-
   if (isMessagesLoading) {
     return (
       <div className="flex-1 flex flex-col overflow-auto">
@@ -143,43 +134,81 @@ const ChatContainer = () => {
                 />
               </div>
             </div>
-            <div className="chat-header mb-1 flex items-center">
+            <div className="chat-header mb-1">
               <time className="text-xs opacity-50 ml-1">
                 {formatMessageTime(message.createdAt)}
               </time>
-              {message.senderId === authUser._id && (
-                <button
-                  className="ml-auto text-gray-500 hover:text-gray-800 focus:outline-none"
-                  onClick={() => toggleMenu(message._id)}
-                >
-                  ...
-                </button>
-              )}
             </div>
-            <div className="chat-bubble flex flex-col relative">
-              {message.text && <p>{message.text}</p>}
-              {message.image && <img src={message.image} alt="Attachment" className="rounded-md" />}
-              {message.video && (
-                <video src={message.video} controls className="rounded-md"></video>
+            <div className="chat-bubble flex flex-col">
+              {message.image && (
+                <div>
+                  <img
+                    src={message.image}
+                    alt="Attachment"
+                    className="sm:max-w-[200px] rounded-md mb-2"
+                  />
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleImageDownload(message.image)}
+                      className="px-3 py-1.5 bg-blue-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-blue-600 transition-all duration-300 ease-in-out"
+                    >
+                      Download
+                    </button>
+                    {message.senderId === authUser._id && (
+                      <button
+                        onClick={() => handleForwardImage(message.image)}
+                        className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
+                      >
+                        Forward
+                      </button>
+                    )}
+                  </div>
+                </div>
               )}
-
-              {activeMenu === message._id && (
-                <div
-                  className="absolute right-0 mt-2 bg-white shadow-lg rounded-md p-2 z-10"
-                  onBlur={closeMenu}
-                >
-                  <button
-                    onClick={() => handleForwardMessage(message.text)}
-                    className="block w-full text-left px-4 py-2 text-sm text-green-500 hover:bg-green-100 rounded-md"
-                  >
-                    🔄 Forward
-                  </button>
-                  <button
-                    onClick={() => handleDeleteMessage(message._id)}
-                    className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-100 rounded-md"
-                  >
-                    🗑 Delete
-                  </button>
+              {message.text && (
+                <div>
+                  <p>{message.text}</p>
+                  <div className="flex gap-2 mt-2">
+                    {message.senderId === authUser._id && (
+                      <button
+                        onClick={() => handleForwardMessage(message.text)}
+                        className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
+                      >
+                        Forward
+                      </button>
+                    )}
+                    <button
+                      onClick={() => handleDeleteMessage(message._id)}
+                      className="px-3 py-1.5 bg-red-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-red-600 transition-all duration-300 ease-in-out"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              )}
+              {message.video && (
+                <div>
+                  <video
+                    src={message.video}
+                    controls
+                    className="sm:max-w-[200px] rounded-md mb-2"
+                  />
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleImageDownload(message.video)}
+                      className="px-3 py-1.5 bg-blue-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-blue-600 transition-all duration-300 ease-in-out"
+                    >
+                      Download
+                    </button>
+                    {message.senderId === authUser._id && (
+                      <button
+                        onClick={() => handleForwardVideo(message.video)}
+                        className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
+                      >
+                        Forward
+                      </button>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -200,4 +229,3 @@ const ChatContainer = () => {
 };
 
 export default ChatContainer;
-
