@@ -89,8 +89,6 @@ const ChatContainer = () => {
       useChatStore.setState((state) => ({
         messages: state.messages.filter((message) => message._id !== messageId),
       }));
-
-      alert("Message deleted successfully");
     } catch (error) {
       console.error("Error deleting message:", error);
 
