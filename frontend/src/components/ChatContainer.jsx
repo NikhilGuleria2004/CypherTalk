@@ -82,8 +82,6 @@ const ChatContainer = () => {
   };
 
   const handleDeleteMessage = async (messageId) => {
-    if (!window.confirm("Are you sure you want to delete this message?")) return;
-
     try {
       const response = await axiosInstance.delete(`/messages/${messageId}`);
       console.log("Delete response:", response);
