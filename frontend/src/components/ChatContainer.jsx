@@ -168,22 +168,22 @@ const ChatContainer = () => {
               {message.text && (
                 <div>
                   <p>{message.text}</p>
-                  <div className="flex gap-2 mt-2">
-                    {message.senderId === authUser._id && (
+                  {message.senderId === authUser._id && (
+                    <div className="flex gap-2 mt-2">
                       <button
                         onClick={() => handleForwardMessage(message.text)}
                         className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
                       >
                         Forward
                       </button>
-                    )}
-                    <button
-                      onClick={() => handleDeleteMessage(message._id)}
-                      className="px-3 py-1.5 bg-red-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-red-600 transition-all duration-300 ease-in-out"
-                    >
-                      Delete
-                    </button>
-                  </div>
+                      <button
+                        onClick={() => handleDeleteMessage(message._id)}
+                        className="px-3 py-1.5 bg-red-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-red-600 transition-all duration-300 ease-in-out"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
               {message.video && (
@@ -229,3 +229,4 @@ const ChatContainer = () => {
 };
 
 export default ChatContainer;
+
