@@ -5,7 +5,8 @@ import SidebarSkeleton from "./skeletons/SidebarSkeleton";
 import { Users } from "lucide-react";
 
 const Sidebar = () => {
-  const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
+  const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading, messages } =
+    useChatStore();
 
   const { onlineUsers } = useAuthStore();
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
@@ -14,9 +15,24 @@ const Sidebar = () => {
     getUsers();
   }, [getUsers]);
 
+  // Sort users based on the most recent message timestamp
+  const sortedUsers = [...users].sort((a, b) => {
+    const lastMessageA = messages
+      .filter((msg) => msg.senderId === a._id || msg.receiverId === a._id)
+      .sort((msg1, msg2) => new Date(msg2.createdAt) - new Date(msg1.createdAt))[0];
+    const lastMessageB = messages
+      .filter((msg) => msg.senderId === b._id || msg.receiverId === b._id)
+      .sort((msg1, msg2) => new Date(msg2.createdAt) - new Date(msg1.createdAt))[0];
+
+    const timeA = lastMessageA ? new Date(lastMessageA.createdAt) : 0;
+    const timeB = lastMessageB ? new Date(lastMessageB.createdAt) : 0;
+
+    return timeB - timeA;
+  });
+
   const filteredUsers = showOnlineOnly
-    ? users.filter((user) => onlineUsers.includes(user._id))
-    : users;
+    ? sortedUsers.filter((user) => onlineUsers.includes(user._id))
+    : sortedUsers;
 
   if (isUsersLoading) return <SidebarSkeleton />;
 
@@ -27,7 +43,6 @@ const Sidebar = () => {
           <Users className="size-6" />
           <span className="font-medium hidden lg:block">Contacts</span>
         </div>
-        {/* TODO: Online filter toggle */}
         <div className="mt-3 hidden lg:flex items-center gap-2">
           <label className="cursor-pointer flex items-center gap-2">
             <input
@@ -47,8 +62,7 @@ const Sidebar = () => {
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
-            className={`
-              w-full p-3 flex items-center gap-3
+            className={`w-full p-3 flex items-center gap-3
               hover:bg-base-300 transition-colors
               ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
             `}
@@ -66,8 +80,6 @@ const Sidebar = () => {
                 />
               )}
             </div>
-
-            {/* User info - only visible on larger screens */}
             <div className="hidden lg:block text-left min-w-0">
               <div className="font-medium truncate">{user.fullName}</div>
               <div className="text-sm text-zinc-400">
@@ -84,4 +96,5 @@ const Sidebar = () => {
     </aside>
   );
 };
+
 export default Sidebar;
