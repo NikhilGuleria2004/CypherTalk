@@ -155,12 +155,20 @@ const ChatContainer = () => {
                       Download
                     </button>
                     {message.senderId === authUser._id && (
-                      <button
-                        onClick={() => handleForwardImage(message.image)}
-                        className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
-                      >
-                        Forward
-                      </button>
+                      <>
+                        <button
+                          onClick={() => handleForwardImage(message.image)}
+                          className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
+                        >
+                          Forward
+                        </button>
+                        <button
+                          onClick={() => handleDeleteMessage(message._id)}
+                          className="px-3 py-1.5 bg-red-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-red-600 transition-all duration-300 ease-in-out"
+                        >
+                          Delete
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -201,12 +209,20 @@ const ChatContainer = () => {
                       Download
                     </button>
                     {message.senderId === authUser._id && (
-                      <button
-                        onClick={() => handleForwardVideo(message.video)}
-                        className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
-                      >
-                        Forward
-                      </button>
+                      <>
+                        <button
+                          onClick={() => handleForwardVideo(message.video)}
+                          className="px-3 py-1.5 bg-green-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-600 transition-all duration-300 ease-in-out"
+                        >
+                          Forward
+                        </button>
+                        <button
+                          onClick={() => handleDeleteMessage(message._id)}
+                          className="px-3 py-1.5 bg-red-500 text-white text-sm font-semibold rounded-lg shadow hover:bg-red-600 transition-all duration-300 ease-in-out"
+                        >
+                          Delete
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -229,4 +245,3 @@ const ChatContainer = () => {
 };
 
 export default ChatContainer;
-
